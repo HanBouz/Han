@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&spi1>;
+        __overlay__ {
+            status = "okay";
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            gas_detector: gas_detector@0 {
+                compatible = "spidev";
+                reg = <0>; /* SPI chip select 0 */
+                spi-max-frequency = <1000000>;
+                status = "okay";
+            };
+        };
+    };
+};

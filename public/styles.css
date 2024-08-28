@@ -1,0 +1,130 @@
+/* styles.css */
+:root {
+    --primary-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --zero-color: #4682B4; /* Steel Blue for zero level */
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    color: #000000; /* Fixed black color for the title */
+    font-size: 32px; /* Increased font size */
+    font-weight: bold; /* Make it bold for better visibility */
+}
+
+.datetime {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.monitor-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gas-level {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.gas-level .unit {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.status {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.status-normal {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-zero {
+    background-color: var(--zero-color);
+    color: white;
+}
+
+.status-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.error {
+    color: var(--danger-color);
+}
+
+.loading {
+    color: var(--primary-color);
+}
+
+/* Flashing backgrounds */
+@keyframes flash-danger {
+    0%, 100% { background-color: var(--danger-color); }
+    50% { background-color: var(--background-color); }
+}
+
+@keyframes flash-zero {
+    0%, 100% { background-color: var(--zero-color); }
+    50% { background-color: var(--background-color); }
+}
+
+body.status-danger {
+    animation: flash-danger 1s infinite;
+}
+
+body.status-zero {
+    animation: flash-zero 1s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 28px; /* Slightly smaller for mobile, but still larger than before */
+    }
+
+    .gas-level {
+        font-size: 2.5rem;
+    }
+
+    .datetime {
+        font-size: 0.9rem;
+    }
+}
